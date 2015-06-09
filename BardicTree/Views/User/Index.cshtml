@@ -1,0 +1,22 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="jumbotron">
+    <h1>@ViewBag.DisplayName</h1>
+</div>
+<div class="body-content">
+    <div class="col-md-3">&nbsp;</div>
+    <div class="col-md-6">
+        <p>@ViewBag.Description</p>
+    </div>
+    <div class="col-md-3">
+        <blockquote>
+            <p>This author has written @ViewBag.NodeCount story elements.</p>
+        </blockquote>
+        <blockquote>
+            <p>This author joined on @ViewBag.Joined.</p>
+        </blockquote>
+    </div>
+</div>

@@ -1,0 +1,35 @@
+﻿
+@{
+    ViewBag.Title = "Node";
+}
+
+<div class="jumbotron">
+    <h1>@ViewBag.NodeTitle</h1>
+</div>
+<div class="body-content">
+    <div class="col-md-3">&nbsp;</div>
+    <div class="col-md-6">
+        <p>@ViewBag.NodeBody</p>
+    
+        @if (ViewBag.NodeChoices.Count > 0)
+        { 
+            <p class="lead">Choose...</p>
+    
+            foreach (var c in ViewBag.NodeChoices)
+            { 
+                <p><a href="/Node/View/@c.Key" class="btn btn-default btn-block">@c.Value</a></p>
+            }
+        
+        }
+        <p><a href="/Node/Create/@ViewBag.NodeID" class="btn btn-success">+ Add to the Story</a></p>
+    </div>
+    <div class="col-md-3">
+        <blockquote>
+            <p><a href="/User/@ViewBag.NodeCreator">@ViewBag.NodeCreator</a> created this story element on @ViewBag.NodeDate.ToLongDateString().</p>
+        </blockquote>
+        <blockquote>
+            <p>So far, @ViewBag.NodeVisits travellers have passed this way.</p>
+        </blockquote>
+    </div>
+</div>
+
