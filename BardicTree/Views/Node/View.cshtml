@@ -10,18 +10,25 @@
     <div class="col-md-3">&nbsp;</div>
     <div class="col-md-6">
         <p>@ViewBag.NodeBody</p>
-    
+        <p class="lead">Choose...</p>
+            
         @if (ViewBag.NodeChoices.Count > 0)
         { 
-            <p class="lead">Choose...</p>
-    
             foreach (var c in ViewBag.NodeChoices)
             { 
                 <p><a href="/Node/View/@c.Key" class="btn btn-default btn-block">@c.Value</a></p>
             }
-        
         }
-        <p><a href="/Node/Create/@ViewBag.NodeID" class="btn btn-success">+ Add to the Story</a></p>
+
+        <form action="/Node/Create/@ViewBag.NodeID" method="get" class="form-horizontal hidden" id="addFrm">
+            <div class="form-group col-md-11">
+                <input type="text" name="choice" placeholder="My Choice" class="form-control" />
+            </div>
+            <div class="col-md-1">
+                <button type="submit" class="btn btn-success">+</button>
+            </div>
+        </form>
+        <p><button class="btn btn-success" id="addBtn" onclick="$('#addFrm').removeClass('hidden'); $('#addBtn').addClass('hidden');">+ Add to the Story</button></p>
     </div>
     <div class="col-md-3">
         <blockquote>

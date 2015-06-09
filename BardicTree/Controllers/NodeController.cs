@@ -50,10 +50,11 @@ namespace BardicTree.Controllers
             return View();
         }
 
-        public ActionResult Create(int id)
+        public ActionResult Create(int id, string choice)
         {
             var model = new UIAddStoryElement();
             model.ParentNode = id;
+            model.ChoiceText = choice;
             return View(model);
         }
 

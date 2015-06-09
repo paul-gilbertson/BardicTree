@@ -17,8 +17,8 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.ChoiceText, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.EditorFor(model => model.ChoiceText, new { htmlAttributes = new { @class = "form-control", @placeholder = "Choice the traveller makes..." } })
-                    @Html.ValidationMessageFor(model => model.ChoiceText, "", new { @class = "text-danger" })
+                    <p class="form-control-static">@Html.DisplayFor(model => model.ChoiceText)</p>
+                    @Html.HiddenFor(model => model.ChoiceText)
                 </div>
             </div>
             <div class="form-group">
