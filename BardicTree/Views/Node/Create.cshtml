@@ -35,6 +35,13 @@
                     @Html.ValidationMessageFor(model => model.StoryText, "", new { @class = "text-danger" })
                 </div>
             </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.QuestionText, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.QuestionText, new { htmlAttributes = new { @class = "form-control", @placeholder = "Question that the story poses at the end..." } })
+                    @Html.ValidationMessageFor(model => model.QuestionText, "", new { @class = "text-danger" })
+                </div>
+            </div>
             @Html.HiddenFor(model => model.ParentNode)
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
@@ -45,7 +52,8 @@
         <div class="col-md-3">
             <p><strong>Choice</strong> - The text for the choice should be simple and clearly following the question posed in the previous story element.</p>
             <p><strong>Title</strong> - Keep the title simple and relevent to the choice made.</p>
-            <p><strong>Story</strong> - Write away! The element should progress the story forward and pose a meaningful question at the end for others to provide answers for.</p>
+            <p><strong>Story</strong> - Write away! The element should progress the story forward.</p>
+            <p><strong>Question</strong> - Pose a meaningful question for others to provide answers for</p>
         </div>
     </div>
 }

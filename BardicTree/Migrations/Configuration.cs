@@ -21,7 +21,7 @@ namespace BardicTree.Migrations
             context.SaveChanges();
 
             context.Nodes.AddOrUpdate(p => p.NodeID
-                , new Node { NodeID = 1, Title = "In the Beginning...", BodyText = "The formless void. Speak your word of creation!", CreationDate = DateTime.Now, CreatorUserID = context.Users.First(u => u.UserName == "SystemUser").Id
+                , new Node { NodeID = 1, Title = "In the Beginning...", BodyText = "The formless void. Speak your word of creation!", Question = "To which story do you wish to travel?", CreationDate = DateTime.Now, CreatorUserID = context.Users.First(u => u.UserName == "SystemUser").Id
                 });
 
             context.SaveChanges();

@@ -35,6 +35,7 @@ namespace BardicTree.Controllers
             ViewBag.NodeID = id;
             ViewBag.NodeTitle = node.Title;
             ViewBag.NodeBody = node.BodyText;
+            ViewBag.NodeQuestion = node.Question;
             ViewBag.NodeCreator = node.Creator.DisplayName;
             ViewBag.NodeDate = node.CreationDate;
 
@@ -60,11 +61,11 @@ namespace BardicTree.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ChoiceText,TitleText,StoryText,ParentNode")] UIAddStoryElement se)
+        public ActionResult Create([Bind(Include = "ChoiceText,TitleText,StoryText,QuestionText,ParentNode")] UIAddStoryElement se)
         {
             if (ModelState.IsValid)
             {
-                var node = new Node { Title = se.TitleText, BodyText = se.StoryText, CreationDate = DateTime.Now, CreatorUserID = User.Identity.GetUserId() };
+                var node = new Node { Title = se.TitleText, BodyText = se.StoryText, Question = se.QuestionText, CreationDate = DateTime.Now, CreatorUserID = User.Identity.GetUserId() };
                 var nNode = db.Nodes.Add(node);
                 db.SaveChanges();
                 db.Nodes.Find(se.ParentNode).NodeChoices.Add(new NodeChoice { childNodeID = nNode.NodeID, text = se.ChoiceText });

@@ -13,6 +13,7 @@ namespace BardicTree.Models
         public int NodeID { get; set; }
         public string Title { get; set; }
         public string BodyText { get; set; }
+        public string Question { get; set; }
         public virtual ICollection<NodeChoice> NodeChoices { get; set; }
         public DateTime CreationDate { get; set; }
 
@@ -53,6 +54,9 @@ namespace BardicTree.Models
 
         [Display(Name = "Story")]
         public string StoryText { get; set; }
+
+        [Display(Name = "Question")]
+        public string QuestionText { get; set; }
 
         public int ParentNode { get; set; }
     }
