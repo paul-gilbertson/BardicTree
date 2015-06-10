@@ -53,6 +53,12 @@ namespace BardicTree.Controllers
 
         public ActionResult Create(int id, string choice)
         {
+            if (db.Nodes.Find(id).NodeChoices.Count(c => c.text == choice) > 0) 
+            {
+                ViewBag.pid = id;
+                return View("CreateChoiceDuplicateError");
+            }
+
             var model = new UIAddStoryElement();
             model.ParentNode = id;
             model.ChoiceText = choice;
@@ -63,6 +69,13 @@ namespace BardicTree.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ChoiceText,TitleText,StoryText,QuestionText,ParentNode")] UIAddStoryElement se)
         {
+            if (db.Nodes.Find(se.ParentNode).NodeChoices.Count(c => c.text == se.ChoiceText) > 0)
+            {
+                ViewBag.pid = se.ParentNode;
+                return View("CreateChoiceDuplicateError");
+            }
+
+
             if (ModelState.IsValid)
             {
                 var node = new Node { Title = se.TitleText, BodyText = se.StoryText, Question = se.QuestionText, CreationDate = DateTime.Now, CreatorUserID = User.Identity.GetUserId() };
