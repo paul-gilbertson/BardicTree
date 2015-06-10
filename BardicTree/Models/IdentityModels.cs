@@ -62,5 +62,6 @@ using System;
 
         public DbSet<Node> Nodes { get; set; }
         public DbSet<NodeVisit> NodeVisits { get; set; }
+        public DbSet<Story> Stories { get; set; }
     }
 }

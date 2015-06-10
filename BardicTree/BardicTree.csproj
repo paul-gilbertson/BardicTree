@@ -177,6 +177,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\NodeController.cs" />
+    <Compile Include="Controllers\StoryController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -193,11 +194,16 @@
     <Compile Include="Migrations\201506101905155_NodeValidation.Designer.cs">
       <DependentUpon>201506101905155_NodeValidation.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201506102101172_Story.cs" />
+    <Compile Include="Migrations\201506102101172_Story.Designer.cs">
+      <DependentUpon>201506102101172_Story.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\NodeModels.cs" />
+    <Compile Include="Models\StoryModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -274,6 +280,7 @@
     <Content Include="Views\Node\View.cshtml" />
     <Content Include="Views\User\Index.cshtml" />
     <Content Include="Views\Node\CreateChoiceDuplicateError.cshtml" />
+    <Content Include="Views\Story\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -291,6 +298,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201506101905155_NodeValidation.resx">
       <DependentUpon>201506101905155_NodeValidation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201506102101172_Story.resx">
+      <DependentUpon>201506102101172_Story.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

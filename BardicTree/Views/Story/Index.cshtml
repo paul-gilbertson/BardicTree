@@ -1,0 +1,27 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<div class="jumbotron">
+    <h1>Stories</h1>
+</div>
+<div class="body-content">
+    <div class="col-md-3">&nbsp;</div>
+    <div class="col-md-6">
+        <p class="lead">Here is a list of stories currently in BardicTree</p>
+        @if (ViewBag.Stories.Count > 0)
+        {
+            foreach (BardicTree.Models.Story s in ViewBag.Stories)
+            {
+                <p><a href="/Node/View/@s.RootNodeID" class="btn btn-default btn-block">@s.Title started by @s.Owner.DisplayName</a></p>
+            }
+        }
+    </div>
+    <div class="col-md-3">
+        <blockquote>
+            <p>There are currently @ViewBag.Stories.Count stories on BardicTree</p>
+        </blockquote>
+    </div>
+</div>
+
+
