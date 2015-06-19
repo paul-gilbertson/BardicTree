@@ -13,6 +13,7 @@ namespace BardicTree.Controllers
         {
             var db = new BardicTree.Models.ApplicationDbContext();
             ViewBag.NodeCount = db.Nodes.Count();
+            ViewBag.UserCount = db.Users.Count();
             return View();
         }
 
