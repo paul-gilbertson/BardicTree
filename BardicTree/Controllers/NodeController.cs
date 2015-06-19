@@ -24,6 +24,12 @@ namespace BardicTree.Controllers
         [AllowAnonymous]
         public ActionResult View(int id)
         {
+            var md = new MarkdownDeep.Markdown();
+            md.ExtraMode = false;
+            md.SafeMode = true;
+            md.MaxImageWidth = 1;
+            md.NoFollowLinks = true;
+
             var node = db.Nodes.Find(id);
 
             if (User.Identity.GetUserId() != node.CreatorUserID)
@@ -34,7 +40,7 @@ namespace BardicTree.Controllers
 
             ViewBag.NodeID = id;
             ViewBag.NodeTitle = node.Title;
-            ViewBag.NodeBody = node.BodyText;
+            ViewBag.NodeBody = md.Transform(node.BodyText);
             ViewBag.NodeQuestion = node.Question;
             ViewBag.NodeCreator = node.Creator.DisplayName;
             ViewBag.NodeDate = node.CreationDate;
