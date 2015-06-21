@@ -14,6 +14,7 @@ namespace BardicTree.Controllers
             var db = new BardicTree.Models.ApplicationDbContext();
             ViewBag.NodeCount = db.Nodes.Count();
             ViewBag.UserCount = db.Users.Count();
+            ViewBag.Latest = db.Nodes.OrderByDescending(x => x.CreationDate).First();
             return View();
         }
 
