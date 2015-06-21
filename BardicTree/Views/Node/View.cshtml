@@ -31,6 +31,11 @@
         <p><button class="btn btn-success" id="addBtn" onclick="$('#addFrm').removeClass('hidden'); $('#addBtn').addClass('hidden');">+ Add to the Story</button></p>
     </div>
     <div class="col-md-3">
+        @if (ViewBag.ParentID > -1) { 
+        <blockquote>
+            <p>Return to "<a href="/Node/View/@ViewBag.ParentID">@ViewBag.ParentTitle</a>"</p>
+        </blockquote>
+        }
         <blockquote>
             <p><a href="/User/@ViewBag.NodeCreator">@ViewBag.NodeCreator</a> created this story element on @ViewBag.NodeDate.ToLongDateString().</p>
         </blockquote>

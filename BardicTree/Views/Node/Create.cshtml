@@ -14,6 +14,15 @@
 }
 <h2>Create Story Element</h2>
 
+<hr />
+
+<div class="col-md-9 fixed-height-display">
+    <div class="col-md-2">&nbsp;</div>
+    <div class="col-md-10">
+        @Html.Raw(ViewBag.ParentBody)
+        <p class="lead">@ViewBag.ParentQuestion</p>
+    </div>
+</div>
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()

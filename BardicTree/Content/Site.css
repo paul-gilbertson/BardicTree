@@ -22,3 +22,8 @@ select,
 textarea {
 
 }
+
+.fixed-height-display {
+    max-height: 250px; 
+    overflow-y: scroll
+}

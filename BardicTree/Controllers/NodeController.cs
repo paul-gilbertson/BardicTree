@@ -38,6 +38,16 @@ namespace BardicTree.Controllers
                 db.SaveChanges();
             }
 
+            var pNode = db.Nodes.FirstOrDefault(p => p.NodeChoices.Any(nc => nc.childNodeID == id));
+
+            if (pNode != null)
+            {
+                ViewBag.ParentID = pNode.NodeID;
+                ViewBag.ParentTitle = pNode.Title;
+            }
+            else
+                ViewBag.ParentID = -1;
+
             ViewBag.NodeID = id;
             ViewBag.NodeTitle = node.Title;
             ViewBag.NodeBody = md.Transform(node.BodyText);
@@ -64,6 +74,16 @@ namespace BardicTree.Controllers
                 ViewBag.pid = id;
                 return View("CreateChoiceDuplicateError");
             }
+
+            var node = db.Nodes.Find(id);
+            var md = new MarkdownDeep.Markdown();
+            md.ExtraMode = false;
+            md.SafeMode = true;
+            md.MaxImageWidth = 1;
+            md.NoFollowLinks = true;
+
+            ViewBag.ParentBody = md.Transform(node.BodyText);
+            ViewBag.ParentQuestion = node.Question;
 
             var model = new UIAddStoryElement();
             model.ParentNode = id;
