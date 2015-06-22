@@ -15,7 +15,7 @@ namespace BardicTree
 
             routes.MapRoute(
                 name: "User",
-                url: "{controller}/{id}",
+                url: "User/{id}",
                 defaults: new { controller = "User", action = "Index" }
             );
 

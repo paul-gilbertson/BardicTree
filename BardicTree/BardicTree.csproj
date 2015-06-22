@@ -300,6 +300,7 @@
     <Content Include="Views\Node\View.cshtml" />
     <Content Include="Views\User\Index.cshtml" />
     <Content Include="Views\Node\CreateChoiceDuplicateError.cshtml" />
+    <Content Include="Views\Manage\UpdateProfile.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

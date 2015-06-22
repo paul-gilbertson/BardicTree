@@ -13,7 +13,7 @@
             <div class="col-md-4"><img src="@ViewBag.Gravatar" class="img-responsive" /></div>
             <div class="col-md-8">
                 <h2>User Details</h2>
-                <p>@ViewBag.Description</p>
+                @Html.Raw(ViewBag.Description)
             </div>
         </div>
         <div class="row">

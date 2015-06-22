@@ -15,6 +15,7 @@ namespace BardicTree.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        private ApplicationDbContext db = new ApplicationDbContext();
 
         public ManageController()
         {
@@ -50,7 +51,6 @@ namespace BardicTree.Controllers
             }
         }
 
-        
         //
         // GET: /Manage/Index
         public async Task<ActionResult> Index(ManageMessageId? message)
@@ -77,6 +77,33 @@ namespace BardicTree.Controllers
             return View(model);
         }
 
+
+        public ActionResult UpdateProfile()
+        {
+            var userId = User.Identity.GetUserId();
+            var model = new UpdateProfileViewModel
+            {
+                Description = db.Users.Find(userId).Description
+            };
+
+            return View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult UpdateProfile([Bind(Include = "Description")] UpdateProfileViewModel model)
+        {
+            var u = db.Users.Find(User.Identity.GetUserId());
+
+            if (ModelState.IsValid)
+            {
+                u.Description = model.Description;
+                db.SaveChanges();
+                return RedirectToAction("Index", "Manage");
+            }
+
+            return View(model);
+        }
         /*
         //
         // POST: /Manage/RemoveLogin

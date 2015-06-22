@@ -14,6 +14,13 @@ namespace BardicTree.Models
         public bool BrowserRemembered { get; set; }
     }
 
+    public class UpdateProfileViewModel
+    {
+        [Required]
+        [Display(Name = "Description")]
+        public string Description { get; set; }
+    }
+    /*
     public class ManageLoginsViewModel
     {
         public IList<UserLoginInfo> CurrentLogins { get; set; }
@@ -24,6 +31,7 @@ namespace BardicTree.Models
     {
         public string Purpose { get; set; }
     }
+    */
 
     public class SetPasswordViewModel
     {
@@ -58,6 +66,7 @@ namespace BardicTree.Models
         public string ConfirmPassword { get; set; }
     }
 
+    /*
     public class AddPhoneNumberViewModel
     {
         [Required]
@@ -83,4 +92,5 @@ namespace BardicTree.Models
         public string SelectedProvider { get; set; }
         public ICollection<System.Web.Mvc.SelectListItem> Providers { get; set; }
     }
+     * */
 }
