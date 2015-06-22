@@ -1,6 +1,6 @@
 ﻿
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = ViewBag.DisplayName;
 }
 
 <div class="jumbotron">
@@ -9,7 +9,34 @@
 <div class="body-content">
     <div class="col-md-3">&nbsp;</div>
     <div class="col-md-6">
-        <p>@ViewBag.Description</p>
+        <div class="row">
+            <div class="col-md-4"><img src="@ViewBag.Gravatar" class="img-responsive" /></div>
+            <div class="col-md-8">
+                <h2>User Details</h2>
+                <p>@ViewBag.Description</p>
+            </div>
+        </div>
+        <div class="row">
+            <h2>Authored Story Elements</h2>
+            @if (ViewBag.Authored.Count > 0)
+            {
+                <table class="table table-striped">
+                    <tbody>
+                        @foreach (var r in ViewBag.Authored)
+                        {
+                            <tr>
+                                <td><a href="/Node/View/@r.NodeID">@r.Title</a></td>
+                                <td>@r.CreationDate</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            }
+            else
+            {
+                <p>This user has yet to write any story elements.</p>
+            }
+        </div>
     </div>
     <div class="col-md-3">
         <blockquote>

@@ -1,4 +1,5 @@
 ﻿using BardicTree.Models;
+using BardicTree.Profiles;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,12 +20,14 @@ namespace BardicTree.Controllers
             if (u == null)
             {
                 return HttpNotFound();
-            }           
+            }
 
+            ViewBag.Authored = db.Nodes.Where(n => n.CreatorUserID == u.Id).ToList();
             ViewBag.DisplayName = id;
             ViewBag.Description = u.Description ?? "This author has chosen to remain silent.";
             ViewBag.NodeCount = u.Nodes.Count();
             ViewBag.Joined = u.Joined.ToLongDateString();
+            ViewBag.Gravatar = Gravatar.GetURL(u);
 
             return View();
         }
